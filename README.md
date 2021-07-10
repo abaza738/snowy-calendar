@@ -1,6 +1,14 @@
 # SnowyCalendar
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.1.  
+
+## About
+SnowyCalendar is an attempt at creating a calendar from scratch.  
+
+### External Packages
+To make this task easier, a couple libraries were used:
+1. [Moment.js](https://momentjs.com): dealing with dates and their conversions.
+2. [Bootstrap](https://ng-bootstrap.github.io): layout and styling.
 
 ## Development server
 
