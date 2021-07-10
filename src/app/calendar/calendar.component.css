@@ -1,0 +1,74 @@
+.calendar {
+  width: 22rem;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.days-of-week,
+.days-of-month {
+  width: 100%;
+}
+
+.days-of-week .day {
+  font-weight: 800;
+}
+
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.month {
+  display: flex;
+  justify-content: space-between;
+}
+
+.past {
+  background-color: rgb(245, 245, 245);
+  color: rgb(150, 150, 150);
+}
+
+.today {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.divider {
+  width: 100%;
+  margin: 0.5rem auto;
+  border-bottom: solid lightgray 1px;
+}
+
+.bi-chevron-left {
+  border-bottom-left-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+}
+
+.bi-chevron-right {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.bi-chevron-left,
+.bi-chevron-right {
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.bi-chevron-left:hover,
+.bi-chevron-right:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 0.6rem;
+    font-style: italic;
+    letter-spacing: 0.1rem;
+}
