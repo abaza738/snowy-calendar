@@ -1,9 +1,9 @@
 <div class="calendar">
   <div class="row">
     <div class="col month">
-      <i class="bi bi-chevron-left" (click)="previousMonth()"></i>
-      {{ selectedDate.format('MMMM') }} - {{ selectedDate.year() }}
-      <i class="bi bi-chevron-right" (click)="nextMonth()"></i>
+      <i class="bi bi-chevron-left" (click)="navigateMonth(false)"></i>
+      {{ selectedDate.format('MMMM') }} {{ selectedDate.year() }}
+      <i class="bi bi-chevron-right" (click)="navigateMonth(true)"></i>
     </div>
   </div>
   <div class="divider"></div>
@@ -19,13 +19,13 @@
       <ng-container *ngFor="let week of days; let i=index">
         <div class="row">
           <ng-container *ngFor="let day of week">
-            <div class="col day" [ngClass]="{ 'past': day.isBefore, 'today':  day.isToday }">{{ day.day }}</div>
+            <div class="col day" [ngClass]="{ 'past': day.isBefore, 'today':  day.isToday, 'filled': day != '' }">{{ day.day }}</div>
           </ng-container>
         </div>
       </ng-container>
     </div>
   </div>
-</div>
-<div class="row footer">
-  Snowy Calendar ❄️
+  <div class="row footer">
+    Snowy Calendar <img src="../../assets/snowflake.png" width="15">
+  </div>
 </div>

@@ -14,11 +14,20 @@
   font-weight: 800;
 }
 
+.days-of-month .day {
+  cursor: pointer;
+  transition: 300ms;
+}
+.days-of-month .day:not(.past):hover {
+  background-color: rgb(225, 225, 255);
+}
+
 .day {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
+  border: solid 1px transparent;
 }
 
 .month {
@@ -32,8 +41,8 @@
 }
 
 .today {
+  color: rgb(28, 63, 129);
   font-weight: 600;
-  text-decoration: underline;
 }
 
 .divider {
@@ -65,10 +74,10 @@
 }
 
 .footer {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    font-size: 0.6rem;
-    font-style: italic;
-    letter-spacing: 0.1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-size: 0.6rem;
+  font-style: italic;
+  letter-spacing: 0.1rem;
 }

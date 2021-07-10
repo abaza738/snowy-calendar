@@ -8,8 +8,8 @@ import * as moment from 'moment';
 })
 export class CalendarComponent implements OnInit {
 
-  today: moment.Moment = moment();
-  selectedDate: moment.Moment = this.today;
+  today: moment.Moment = moment().hour(0).minute(0).second(0);
+  selectedDate: moment.Moment = moment(this.today);
   daysOfWeek = moment.weekdaysMin(true);
   startOfMonth: number = 0;
   days: any[] = [];
@@ -52,11 +52,11 @@ export class CalendarComponent implements OnInit {
         output.push([]);
         week++
       }
-      let input = moment(`${this.selectedDate.year()}-${this.selectedDate.month()+1}-${i+1}`);
+      let input = moment(`${this.selectedDate.year()}-${this.selectedDate.month()+1}-${i+1}`, 'YYYY-MM-DD').hour(0).minute(0).second(0);
       output[week].push({
         day: input.date(),
-        isBefore: this.today.dayOfYear() > input.dayOfYear(),
-        isToday: this.today.dayOfYear() == input.dayOfYear()
+        isBefore: input.isBefore(this.today, 'day'),
+        isToday: input.isSame(this.today, 'day')
       });
     }
 
@@ -67,14 +67,26 @@ export class CalendarComponent implements OnInit {
     this.days = output;
   }
 
-  previousMonth() {
-    this.selectedDate = moment().month(this.selectedDate.month() - 1);
-    this.ngOnInit();
-  }
-  
-  nextMonth() {
-    this.selectedDate = moment().month(this.selectedDate.month() + 1);
-    this.ngOnInit();
+  /**
+   * @param flag (boolean) when true, indicates navigation to the next month. Else, will navigate to the previous.
+   * ```typescript
+   * navigateMonth(true); // Takes you to next month.
+   * navigateMonth(false); // Takes you to previous month.
+   * ```
+   * Don't be intimidated by this unnecessary comment. I'm trying this out to see how things work.
+   */
+  navigateMonth(flag: boolean) {
+
+    let compare = flag ? 11 : 0;
+    let offset = flag ? 1 : -1;
+    let nextMonth = flag ? 0 : 11;
+
+    if (this.selectedDate.month() == compare)
+      this.selectedDate.year(this.selectedDate.year() + offset).month(nextMonth);
+    else
+      this.selectedDate.month(this.selectedDate.month() + offset);
+    
+    this.divideIntoWeeks();
   }
 
 }
